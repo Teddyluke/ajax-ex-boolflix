@@ -14,17 +14,16 @@ function searchRequest() {
   var searchVal = $("#search").val();
   $(".titles").text("");
   $.ajax({
-    url: "https://api.themoviedb.org/3/search/movie?api_key=e99307154c6dfb0b4750f6603256716d&query=" + searchVal,
+    url: 'https://api.themoviedb.org/3/search/movie?api_key=e99307154c6dfb0b4750f6603256716d&query=' + searchVal + '&language=it',
     method: "GET",
     success: function (data) {
       var results = data["results"];
-      console.log(results);
       var template = $("#searched-movie-template").html();
       var compiled = Handlebars.compile(template);
       var target = $(".titles");
       for (var i = 0; i < results.length; i++) {
         var targetHTML = compiled({
-        "title": results[i].title,
+        "it-title": results[i].title,
         "original_title": results[i].original_title,
         "original_language": results[i].original_language,
         "vote_average": results[i].vote_average
