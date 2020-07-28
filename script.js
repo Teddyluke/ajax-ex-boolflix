@@ -24,11 +24,16 @@ function searchMovies() {
       var compiled = Handlebars.compile(template);
       var target = $(".titles");
       for (var i = 0; i < results.length; i++) {
-        var targetHTML = compiled(results[i])
-        target.append(targetHTML);
         var vote = results[i]['vote_average'];
-        getStarsRating(vote);
-    }
+        var flag = results[i]['original_language'];
+        var targetHTML = compiled({
+          "title": results[i]["title"],
+          "original_title": results[i]["original_title"],
+          "original_language": getCountryFlag(flag),
+          "vote_average": getStarsRating(vote)
+        })
+        target.append(targetHTML);
+      }
     },
     error: function (error) {
       console.log(error);
@@ -52,11 +57,16 @@ function searchSeries(searchVal) {
       var compiled = Handlebars.compile(template);
       var target = $(".titles");
       for (var i = 0; i < results.length; i++) {
-        var targetHTML = compiled(results[i])
-        target.append(targetHTML);
         var vote = results[i]['vote_average'];
-        getStarsRating(vote);
-    }
+        var flag = results[i]['original_language'];
+        var targetHTML = compiled({
+          "name": results[i]["name"],
+          "original_name": results[i]["original_name"],
+          "original_language": getCountryFlag(flag),
+          "vote_average": getStarsRating(vote)
+        })
+        target.append(targetHTML);
+      }
     },
     error: function (error) {
       console.log(error);
@@ -65,35 +75,34 @@ function searchSeries(searchVal) {
 }
 
 
-// POSIZIONAMENTO STELLINE NON RIUSCITO
+// POSIZIONAMENTO STELLINE
 function getStarsRating(vote){
-  var starsRating = Math.ceil(vote / 2);
-  var template = $("#stars-template").html();
-  var compiled = Handlebars.compile(template);
-  var target = $(".titles");
-  var star = " ";
-  for (var i = 0; i < 5; i++) {
-    console.log(starsRating);
-    if (i < starsRating) {
-      star += '<i class="fas fa-star"> </i>';
-    } else {
-      star += '<i class="far fa-star"> </i>';
-    }
+var starsRating = Math.ceil(vote / 2);
+var star = " ";
+for (var i = 0; i < 5; i++) {
+  if (i < starsRating) {
+    star += '<i class="fas fa-star"> </i>';
+  } else {
+    star += '<i class="far fa-star"> </i>';
   }
-  var targetHTML = compiled({
-    "stars" : star
-  });
-  target.append(targetHTML);
 }
-function testing() {
-  var test1 = "it";
-  var test2 = 'https://www.countryflags.io/'+ test1 +'/shiny/32.png'
-  console.log(test2);
+  return star;
 }
+
+// FUNZIONE BANDIERE
+function getCountryFlag(flag) {
+  if (flag == "it") {
+    return '<img src="https://www.countryflags.io/it/shiny/32.png">'
+  } else if (flag == "en") {
+    return '<img src="https://www.countryflags.io/gb/shiny/32.png">'
+  } else {
+    return flag
+  }
+}
+
 
 function init() {
 searchBtnListener();
-testing();
 }
 
 $(document).ready(init);

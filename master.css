@@ -8,3 +8,12 @@ ul {
   list-style: none;
   padding: 10px;
 }
+
+.fa-star {
+  color: gold;
+}
+
+.flag {
+  display: flex;
+  align-items: center;
+}
