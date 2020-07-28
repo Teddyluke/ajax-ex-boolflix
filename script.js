@@ -42,21 +42,14 @@ function searchRequest() {
 
 function getStarsRating(vote){
   var starsRating = Math.ceil(vote / 2);
-  var template = $("#star-rating").html();
-  var compiled = Handlebars.compile(template);
-  var target = $(".titles");
-  var targetHTML;
-  for (var i = 0; i < 5; i++) {
-    if(i<vote){
-      targetHTML = compiled({
-        "stellapiena": "<i class='fa fa-star'></i>",
-      });
-    }else{
-      targetHTML = compiled({
-        "stellavuota": "<i class='far fa-star'></i>"
-      });
+  var starPosition = $(".titles .stars");
+  starPosition.txt("");
+  for (var i = 1; i <= 5; i++) {
+    if (i < vote) {
+      starPosition.append("1");
+    } else {
+      starPosition.append("2");
     }
-    target.append(targetHTML);
   }
 }
 
