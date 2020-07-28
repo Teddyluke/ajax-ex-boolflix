@@ -11,10 +11,10 @@
 
     <script id="searched-movie-template" type="text/x-handlebars-template">
       <ul>
-        <li>Titolo: {{title}}</li>
-        <li>Titolo originale: {{original_title}}</li>
+        <li>Titolo: {{title}} {{name}}</li>
+        <li>Titolo originale: {{original_title}} {{original_name}}</li>
         <li data-flag="{{original_language}}">Lingua originale: {{original_language}}</li>
-        <li class="stars" >Voto:</li>
+        <li>Voto: {{vote_average}}</li>
       </ul>
     </script>
 

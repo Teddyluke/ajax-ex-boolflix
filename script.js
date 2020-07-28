@@ -7,10 +7,10 @@
 
 function searchBtnListener() {
   var btn = $("#search-btn");
-  btn.click(searchRequest);
+  btn.click(searchMovies);
 }
 
-function searchRequest() {
+function searchMovies() {
   var searchVal = $("#search").val();
   $(".titles").text("");
   $("#search").val("");
@@ -30,8 +30,34 @@ function searchRequest() {
       for (var i = 0; i < results.length; i++) {
         var targetHTML = compiled(results[i])
         target.append(targetHTML);
-        var vote = results[i]['vote_average'];
-        getStarsRating(vote)
+        // var vote = results[i]['vote_average'];
+    }
+    },
+    error: function (error) {
+      console.log(error);
+    }
+  })
+  searchSeries(searchVal)
+}
+
+function searchSeries(searchVal) {
+  $.ajax({
+    url: 'https://api.themoviedb.org/3/search/tv',
+    method: "GET",
+    data: {
+      'api_key':'e99307154c6dfb0b4750f6603256716d',
+      'query' : searchVal,
+      'language' : 'it'
+    },
+    success: function (data) {
+      var results = data["results"];
+      var template = $("#searched-movie-template").html();
+      var compiled = Handlebars.compile(template);
+      var target = $(".titles");
+      for (var i = 0; i < results.length; i++) {
+        var targetHTML = compiled(results[i])
+        target.append(targetHTML);
+        // var vote = results[i]['vote_average'];
     }
     },
     error: function (error) {
@@ -40,18 +66,19 @@ function searchRequest() {
   })
 }
 
-function getStarsRating(vote){
-  var starsRating = Math.ceil(vote / 2);
-  var starPosition = $(".titles .stars");
-  starPosition.txt("");
-  for (var i = 1; i <= 5; i++) {
-    if (i < vote) {
-      starPosition.append("1");
-    } else {
-      starPosition.append("2");
-    }
-  }
-}
+
+// POSIZIONAMENTO STELLINE NON RIUSCITO
+// function getStarsRating(vote){
+//   var starsRating = Math.ceil(vote / 2);
+//   var starPosition = $(".titles .stars");
+//   for (var i = 1; i <= 5; i++) {
+//     if (i < vote) {
+//       starPosition.append("1");
+//     } else {
+//       starPosition.append("2");
+//     }
+//   }
+// }
 
 
 function init() {
