@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Boolflix</title>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <link rel="stylesheet" href="./master.css">
@@ -11,11 +11,16 @@
 
     <script id="searched-movie-template" type="text/x-handlebars-template">
       <ul>
-        <li>Titolo: {{it-title}}</li>
+        <li>Titolo: {{title}}</li>
         <li>Titolo originale: {{original_title}}</li>
-        <li>Lingua originale: {{original_language}}</li>
-        <li>Voto: {{vote_average}}</li>
+        <li data-flag="{{original_language}}">Lingua originale: {{original_language}}</li>
+        <script id="star-rating" type="text/x-handlebars-template">
+          <li class="stars" >Voto: {{stellapiena}} {{stellavuota}}</li>
+        </script>
       </ul>
+    </script>
+
+    <script type="text/javascript">
 
     </script>
   </head>
