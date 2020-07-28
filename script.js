@@ -24,13 +24,15 @@ function searchMovies() {
     },
     success: function (data) {
       var results = data["results"];
+      // template title name
       var template = $("#searched-movie-template").html();
       var compiled = Handlebars.compile(template);
       var target = $(".titles");
       for (var i = 0; i < results.length; i++) {
         var targetHTML = compiled(results[i])
         target.append(targetHTML);
-        // var vote = results[i]['vote_average'];
+        var vote = results[i]['vote_average'];
+        getStarsRating(vote);
     }
     },
     error: function (error) {
@@ -68,17 +70,24 @@ function searchSeries(searchVal) {
 
 
 // POSIZIONAMENTO STELLINE NON RIUSCITO
-// function getStarsRating(vote){
-//   var starsRating = Math.ceil(vote / 2);
-//   var starPosition = $(".titles .stars");
-//   for (var i = 1; i <= 5; i++) {
-//     if (i < vote) {
-//       starPosition.append("1");
-//     } else {
-//       starPosition.append("2");
-//     }
-//   }
-// }
+function getStarsRating(vote){
+  var starsRating = Math.ceil(vote / 2);
+  var template = $("#stars-template").html();
+  var compiled = Handlebars.compile(template);
+  var target = $(".titles");
+  var star = " ";
+  for (var i = 1; i <= 5; i++) {
+    if (i < vote) {
+      star += '<i class="fa fa-star"> </i>';
+    } else {
+      star += '<i class="fa fa-star"> </i>';
+    }
+  }
+  var targetHTML = compiled({
+    "stars" : star
+  });
+  target.append(targetHTML);
+}
 
 
 function init() {
