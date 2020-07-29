@@ -10,19 +10,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 
     <script id="searched-movie-template" type="text/x-handlebars-template">
-      <ul>
-        <li>Titolo: {{title}} {{name}}</li>
-        <li>Titolo originale: {{original_title}} {{original_name}}</li>
-        <li class="flag">Lingua originale:{{{original_language}}}</li>
-        <li>Voto: {{{vote_average}}} </li>
-      </ul>
-    </script>
-    <script id="stars-template" type="text/x-handlebars-template">
-      <li>Voto: {{{stars}}} </i> </li>
+      <div class="cards">
+        <img src="{{{poster}}}" alt="poster">
+        <ul>
+          <li>Titolo: {{title}} {{name}}</li>
+          <li>Titolo originale: {{original_title}} {{original_name}}</li>
+          <li class="flag">Lingua originale:{{{original_language}}}</li>
+          <li>Voto: {{{vote_average}}} </li>
+        </ul>
+      </div>
     </script>
   </head>
-
-
   <body>
     <div class="searchbar">
       <input id="search" type="input" name="" value="">

@@ -26,11 +26,13 @@ function searchMovies() {
       for (var i = 0; i < results.length; i++) {
         var vote = results[i]['vote_average'];
         var flag = results[i]['original_language'];
+        var poster = results[i]["poster_path"];
         var targetHTML = compiled({
           "title": results[i]["title"],
           "original_title": results[i]["original_title"],
           "original_language": getCountryFlag(flag),
-          "vote_average": getStarsRating(vote)
+          "vote_average": getStarsRating(vote),
+          "poster": 'https://image.tmdb.org/t/p/w185' + poster + ''
         })
         target.append(targetHTML);
       }
@@ -59,11 +61,13 @@ function searchSeries(searchVal) {
       for (var i = 0; i < results.length; i++) {
         var vote = results[i]['vote_average'];
         var flag = results[i]['original_language'];
+        var poster = results[i]["poster_path"];
         var targetHTML = compiled({
           "name": results[i]["name"],
           "original_name": results[i]["original_name"],
           "original_language": getCountryFlag(flag),
-          "vote_average": getStarsRating(vote)
+          "vote_average": getStarsRating(vote),
+          "poster": 'https://image.tmdb.org/t/p/w185' + poster + ''
         })
         target.append(targetHTML);
       }
