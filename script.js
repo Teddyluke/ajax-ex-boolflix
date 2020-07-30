@@ -32,7 +32,8 @@ function searchMovies() {
           "original_title": results[i]["original_title"],
           "original_language": getCountryFlag(flag),
           "vote_average": getStarsRating(vote),
-          "poster": 'https://image.tmdb.org/t/p/w185' + poster + ''
+          "poster": 'https://image.tmdb.org/t/p/w342' + poster + '',
+          "overview": results[i]["overview"]
         })
         target.append(targetHTML);
       }
@@ -67,7 +68,8 @@ function searchSeries(searchVal) {
           "original_name": results[i]["original_name"],
           "original_language": getCountryFlag(flag),
           "vote_average": getStarsRating(vote),
-          "poster": 'https://image.tmdb.org/t/p/w185' + poster + ''
+          "poster": 'https://image.tmdb.org/t/p/w342' + poster + '',
+          "overview": results[i]["overview"]
         })
         target.append(targetHTML);
       }

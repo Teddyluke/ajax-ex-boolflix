@@ -11,24 +11,35 @@
 
     <script id="searched-movie-template" type="text/x-handlebars-template">
       <div class="cards">
-        <img src="{{{poster}}}" alt="poster">
+        <img class="poster-img" src="{{{poster}}}" alt="poster">
         <ul>
-          <li>Titolo: {{title}} {{name}}</li>
-          <li>Titolo originale: {{original_title}} {{original_name}}</li>
-          <li class="flag">Lingua originale:{{{original_language}}}</li>
-          <li>Voto: {{{vote_average}}} </li>
+          <li> <b>Titolo:</b> {{title}} {{name}}</li>
+          <li><b>Titolo originale:</b> {{original_title}} {{original_name}}</li>
+          <li class="flag"><b>Lingua originale:</b>{{{original_language}}}</li>
+          <li><b>Voto:</b> {{{vote_average}}} </li>
+          <li><b>Overview</b> {{overview}} </li>
         </ul>
       </div>
     </script>
   </head>
   <body>
-    <div class="searchbar">
-      <input id="search" type="input" name="" value="">
-      <button id="search-btn"type="button" name="button">cerca</button>
-    </div>
-
-    <div class="titles">
-    </div>
+    <header>
+      <div class="header-flex-wrap">
+        <div id="logo">
+          <h2>BOOLFLIX</h2>
+        </div>
+        <div class="searchbar">
+          <input id="search" type="input" name="" value="">
+          <button id="search-btn"type="button" name="button">cerca</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="main-container">
+        <div class="titles">
+        </div>
+      </div>
+    </main>
 
     <script type="text/javascript" src="script.js">
 
