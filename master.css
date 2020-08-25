@@ -1,71 +1,72 @@
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
-/* header */
-.header-flex-wrap {
+.centratura {
   padding: 0 5%;
+}
+
+/* header */
+.header-container-flex {
   display: flex;
-  height: 40px;
-  background-color: black;
   justify-content: space-between;
   align-items: center;
+  height: 90px;
+  background-color: black;
 }
 
-#logo h2 {
+#logo h1{
   color: red;
+  font-size: 2.5em;
 }
 
-/* Main */
+/* main */
 
 .main-container {
   background-color: grey;
-  overflow: hidden;
+  height: calc(100vh - 90px);
   width: 100%;
-  height: calc(100vh - 40px);
 }
 
-.cards {
+.titoli {
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.card {
   position: relative;
   display: flex;
-  width: 342px;
   height: 513px;
+  width: 342px;
+  border-radius: 10px;
   background-color: black;
-  border: 1px solid white;
+  color: white;
+  flex-shrink: 0;
+  margin: 0 20px;
   justify-content: center;
-  align-items: center;
-  overflow: hidden;
+
 }
-.poster-img {
+
+.card ul {
+  list-style: none;
+  padding: 10px 10px;
+}
+
+.card .fas, .card .far {
+  color: yellow;
+}
+
+.poster {
   position: absolute;
 }
 
-/* hover */
-.cards:hover .poster-img {
+.poster img {
+  border-radius: 10px;
+}
+
+.card:hover .poster {
   display: none;
-}
-
-/* cards rule */
-ul {
-  list-style: none;
-  padding: 10px;
-}
-
-ul li {
-  color: white;
-  font-size: 1.1em;
-}
-.fa-star {
-  color: gold;
-}
-
-.flag {
-  display: flex;
-  align-items: center;
-}
-
-.titles {
-  display: flex;
-  justify-content: space-between;
 }

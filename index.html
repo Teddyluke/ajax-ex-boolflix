@@ -2,47 +2,54 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Boolflix</title>
+    <title> Boolflix </title>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <link rel="stylesheet" href="./master.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 
-    <script id="searched-movie-template" type="text/x-handlebars-template">
-      <div class="cards">
-        <img class="poster-img" src="{{{poster}}}" alt="poster">
+    <script id="film-template" type="text/x-handlebars-template">
+      <div class="card">
+        <div class="poster">
+          {{# if poster_path}}
+          <img src="https://image.tmdb.org/t/p/w342/{{ poster_path }}" alt="poster">
+          {{/if}}
+        </div>
         <ul>
-          <li> <b>Titolo:</b> {{title}} {{name}}</li>
-          <li><b>Titolo originale:</b> {{original_title}} {{original_name}}</li>
-          <li class="flag"><b>Lingua originale:</b>{{{original_language}}}</li>
-          <li><b>Voto:</b> {{{vote_average}}} </li>
-          <li><b>Overview</b> {{overview}} </li>
+          <li>Titolo: {{title}} {{name}}</li>
+          {{#unless equalTitle}}
+            <li>Titolo originale: {{original_title}} {{original_name}}</li>
+          {{/unless}}
+          <li>Attori principali: {{actors}} </li>
+          <li>Lingua: {{{flag}}}</li>
+          <li>Voto: {{{stars}}}</li>
+          <li>Overview: {{{overview}}}</li>
+
         </ul>
       </div>
     </script>
   </head>
+
   <body>
     <header>
-      <div class="header-flex-wrap">
+      <div class="header-container-flex centratura">
         <div id="logo">
-          <h2>BOOLFLIX</h2>
+          <h1>Boolflix</h1>
         </div>
-        <div class="searchbar">
-          <input id="search" type="input" name="" value="">
-          <button id="search-btn"type="button" name="button">cerca</button>
+        <div class="searchbar-container">
+          <input id="searchbar" type="text" name="searchbar" value="">
+          <button id="searchbtn" type="button" name="button">Cerca</button>
         </div>
       </div>
     </header>
     <main>
       <div class="main-container">
-        <div class="titles">
+        <div class="titoli">
+
         </div>
       </div>
     </main>
-
-    <script type="text/javascript" src="script.js">
-
-    </script>
+    <script src="script.js" charset="utf-8"></script>
   </body>
 </html>
